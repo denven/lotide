@@ -1,15 +1,17 @@
 const assertEqual = function(actual, expected) {
-
   if (actual === expected) {
     //console.log(String.fromCodePoint(0x1F44d) + " Assertion Passed: [" + actual + "] === [" + expected + "]");
     //use template string to output
-    console.log(`${String.fromCodePoint(0x1F44d)}  Assertion Passed: [actual] === [expected]`);
+    console.log(`${String.fromCodePoint(0x1F44d)}  Assertion Passed: [${actual}] === [${expected}]`);
   } else {
     //console.log(String.fromCodePoint(0x1F625) + " Assertion Failed: [" + actual + "] !== [" + expected + "]");
-    console.log(`${String.fromCodePoint(0x1F625)} Assertion Failed: [actual] !== [expected]`);
+    console.log(`${String.fromCodePoint(0x1F625)} Assertion Failed: [${actual}] !== [${expected}]`);
   }
 };
 
+module.exports = {
+  assertEqual
+};
 
 //test code
 assertEqual("Lighthouse Labs", "Bootcamp");
