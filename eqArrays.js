@@ -11,9 +11,16 @@ const assertEqual = function(actual, expected) {
 
 const eqArrays = function(array1, array2) {
   if (array1.length === array2.length) {
-    array1.forEach(function(item, index) {
-      if (item !== array2[index]) return false;
-    });
+    //this code will make the function always return true
+    //as there is a function in forEach, the return statement will not 
+    //return to the eqArray function.
+    //array1.forEach(function(item, index) {
+    //    console.log(typeof item, typeof array2[index]);
+    //    if (item !== array2[index]) { return false; }
+    //});
+    for (var i = 0; i < array1.length; i++) {
+        if(array1[i] !== array2[i]) return false;
+    }
   } else {
     return false;
   }
@@ -21,16 +28,5 @@ const eqArrays = function(array1, array2) {
   return true;
 };
 
-
-//test code
-//assertEqual("Lighthouse Labs", "Bootcamp");
-//assertEqual(1, 1);
-
-//assertEqual("Thanksgiving Day", "Thanksgiving Day");
-//assertEqual(1, 2);
-
-//different types arguments outputs wrong result.
-//assertEqual("1", 1);
-
-assertEqual(eqArrays(["1", "2", "3"], ["1", "2", "3"]), true); // => true
-assertEqual(eqArrays(["1", "2", "3"], ["1", "2", 3]), false); // => false
+assertEqual(eqArrays(["12", "2", "3"], ["12", "2", "3"]), true); // => true
+assertEqual(eqArrays(["1", "2", "3"], ["1", "2", 5]), false); // => true
