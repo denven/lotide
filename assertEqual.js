@@ -1,24 +1,13 @@
+const inspect = require('util').inspect; // to support print object content gracefuly
+
 const assertEqual = function(actual, expected) {
   if (actual === expected) {
-    //console.log(String.fromCodePoint(0x1F44d) + " Assertion Passed: [" + actual + "] === [" + expected + "]");
-    //use template string to output
-    console.log(`${String.fromCodePoint(0x1F44d)}  Assertion Passed: [${actual}] === [${expected}]`);
+    console.log(`${String.fromCodePoint(0x1F44d)}  Assertion Passed: [${inspect(actual)}] === [${inspect(expected)}]`);
   } else {
-    //console.log(String.fromCodePoint(0x1F625) + " Assertion Failed: [" + actual + "] !== [" + expected + "]");
-    console.log(`${String.fromCodePoint(0x1F625)} Assertion Failed: [${actual}] !== [${expected}]`);
+    console.log(`${String.fromCodePoint(0x1F626)}  Assertion Failed: [${inspect(actual)}] !== [${inspect(expected)}]`);
   }
 };
 
 module.exports = {
   assertEqual
 };
-
-//test code
-assertEqual("Lighthouse Labs", "Bootcamp");
-assertEqual(1, 1);
-
-assertEqual("Thanksgiving Day", "Thanksgiving Day");
-assertEqual(1, 2);
-
-//different types arguments outputs wrong result.
-assertEqual("1", 1);
