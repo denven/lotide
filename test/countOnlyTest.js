@@ -1,4 +1,4 @@
-const countOnly = require("./../countOnly.js").countOnly;
+const countOnly = require("./../countOnly.js");
 const assert = require('chai').assert;
 const assertDeep = require('chai').assert.deepEqual;
 
