@@ -9,5 +9,4 @@ describe("#assertArraysEqual()", () => {
   it(`returns false when equal array ${inspect(array1)} and ${inspect(array2)}`, () => {
     assert.strictEqual(assertArraysEqual(array1, array2), false);
   });
-
 });
