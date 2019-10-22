@@ -26,9 +26,9 @@ This	 project was created and published by me as part of my learnings at Lightho
 
 The following functions are currently implemented:
 
-* head(...)`: description
-* tail(...)`: description
-* middle(...)`: description
+* `head(...)`: description
+* `tail(...)`: description
+* `middle(...)`: description
 * without(...):
 * `eqArrays(...)`
 * `eqObjects(...)`
@@ -36,10 +36,10 @@ The following functions are currently implemented:
 * `countOnly(...)`
 * `countLetters(...)`
 * `flatten(...)`
-* `findKey(...)``
+* `findKey(...)`
 * ``findKeyByValue(...)`
 * `letterPosition(...)`
-* `takeUntil`(...)`
+* `takeUntil`(...)
 
 
 
