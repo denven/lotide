@@ -1,0 +1,28 @@
+{
+  "name": "lotide",
+  "version": "1.0.0",
+  "description": "lotide test cases",
+  "main": "head.js",
+  "directories": {
+    "test": "./test"
+  },
+  "dependencies": {
+    "chai": "^4.2.0"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.2"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/denven/lotide.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/denven/lotide/issues"
+  },
+  "homepage": "https://github.com/denven/lotide#readme"
+}

@@ -22,7 +22,10 @@ const eqObjects = function(object1, object2) {
   const eqArrays = function(array1, array2) {
     if (array1.length === array2.length) {
       for (const index in array1) {
-        if (array1[index] !== array2[index]) return false;
+        if (array1[index] !== array2[index]){
+          console.log(array1[index], array2[index])
+          return false;
+        } 
       }
     } else {
       return false;
@@ -31,6 +34,9 @@ const eqObjects = function(object1, object2) {
     return true;
   };
 
+  if (eqPriTypes(object1, object2)) return true;
+
+  //do not consider objects has methods in it
   //when both objects have the same keys
   //if (eqArrays(Object.keys(object1).sort(), Object.keys(object2).sort())) {
   if (eqObjKeys(Object.keys(object1), Object.keys(object2))) {
@@ -39,9 +45,17 @@ const eqObjects = function(object1, object2) {
       if (typeof(object1[key]) !== typeof(object2[key])) {
         return false;
       }
-      //we treat the object as an array(however, it may be other types of object)
+      //
+      //we treat the key-values in object as an array(however, it may be other types of object)
       if (typeof(object1[key]) === 'object') {
-        if (!eqArrays(object1[key], object2[key])) return false;
+        if(object1[key] instanceof Array) {
+          //not support nested array
+          if (!eqArrays(object1[key], object2[key])) return false;
+        } else {
+          //true objects
+          console.log("objects");
+          eqObjects(object1[key], object2[key]);
+        }
       } else {
         if (!eqPriTypes(object1[key], object2[key])) return false;
       }
@@ -78,6 +92,17 @@ const dc = {
   d: ["2", 3],
   c: "1"
 };
+
+
+const ef = {
+  c: "1",
+  d: {e: 4, f: {g: 5}}
+};
+const fe = {
+  d: {e: 4, f: {e: 5}},
+  c: "1"
+};
+
 //console.log(eqObjects(cd, dc)); // => true
 
 const cd2 = {
@@ -85,7 +110,7 @@ const cd2 = {
   d: ["2", 3, 4]
 };
 //console.log(eqObjects(cd, cd2)); // => false
-
+let e = 6, f = 6;
 //test code
 const assertObjectsEqual = function(actual, expected) {
   let bEqual = eqObjects(actual, expected);
@@ -97,7 +122,10 @@ const assertObjectsEqual = function(actual, expected) {
     console.log(`${String.fromCodePoint(0x1F626)} Assertion Failed: ${inspect(actual)} !== ${inspect(expected)}`);
   }
 };
-assertObjectsEqual(ab, ba); // => false
+
+assertObjectsEqual(e, f);
+assertObjectsEqual(ab, ba); // => true
 assertObjectsEqual(ab, abc); // => false
-assertObjectsEqual(cd, dc); // => false
+assertObjectsEqual(cd, dc); // => true
 assertObjectsEqual(cd, cd2); // => false
+assertObjectsEqual(ef, fe); // => true
